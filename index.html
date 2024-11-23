@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Просторова Геометрія</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Просторова Геометрія</h1>
+    <nav>
+      <ul>
+        <li><a href="#formulas">Формули</a></li>
+        <li><a href="#calculations">Обчислення</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <section id="formulas">
+    <h2>Формули для обчислень</h2>
+    <div>
+      <h3>Площа та об'єм геометричних фігур:</h3>
+      <ul>
+        <li><strong>Куб:</strong> Площа = 6 × a², Об'єм = a³</li>
+        <li><strong>Сфера:</strong> Площа = 4πr², Об'єм = (4/3)πr³</li>
+        <li><strong>Циліндр:</strong> Площа = 2πr(r + h), Об'єм = πr²h</li>
+      </ul>
+    </div>
+  </section>
+  
+  <section id="calculations">
+    <h2>Обчислення площі та об'єму</h2>
+    <div>
+      <label for="shape">Виберіть фігуру:</label>
+      <select id="shape" onchange="showForm()">
+        <option value="cube">Куб</option>
+        <option value="sphere">Сфера</option>
+        <option value="cylinder">Циліндр</option>
+      </select>
+    </div>
+    
+    <div id="cube-form" class="shape-form">
+      <label for="cube-side">Довжина сторони куба (a):</label>
+      <input type="number" id="cube-side" placeholder="Введіть довжину сторони" oninput="calculateCube()">
+      <p id="cube-result"></p>
+    </div>
+    
+    <div id="sphere-form" class="shape-form">
+      <label for="sphere-radius">Радіус сфери (r):</label>
+      <input type="number" id="sphere-radius" placeholder="Введіть радіус" oninput="calculateSphere()">
+      <p id="sphere-result"></p>
+    </div>
+    
+    <div id="cylinder-form" class="shape-form">
+      <label for="cylinder-radius">Радіус основи (r):</label>
+      <input type="number" id="cylinder-radius" placeholder="Введіть радіус" oninput="calculateCylinder()">
+      <label for="cylinder-height">Висота (h):</label>
+      <input type="number" id="cylinder-height" placeholder="Введіть висоту" oninput="calculateCylinder()">
+      <p id="cylinder-result"></p>
+    </div>
+  </section>
+
+ <!-- Model Viewer -->
+ <model-viewer id="viewer" 
+ src="bb-8_droid_star_wars_the_force_awakens.glb" 
+ ar 
+ ar-modes="webxr scene-viewer quick-look" 
+ camera-controls 
+ tone-mapping="neutral" 
+ poster="poster.webp" 
+ shadow-intensity="1" 
+ camera-orbit="27.13deg 57.99deg 46.78m" 
+ field-of-view="12deg">
+<div class="progress-bar hide" slot="progress-bar">
+<div class="update-bar"></div>
+</div>
+<button slot="ar-button" id="ar-button">
+View in your space
+</button>
+<div id="ar-prompt">
+<img src="https://modelviewer.dev/shared-assets/icons/hand.png">
+</div>
+</model-viewer>
+
+<!-- File Input -->
+<input type="file" id="file-input" accept=".glb,.gltf" />
+<label for="file-input">Завантажити файл з Blender (.glb, .gltf)</label>
+
+
+  <footer>
+    <p>&copy; 2024 Просторова Геометрія</p>
+  </footer>
+
+  <script src="logick.js"></script>
+</body>
+</html>
